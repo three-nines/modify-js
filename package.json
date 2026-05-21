@@ -1,0 +1,58 @@
+{
+  "name": "@stless/modify-js",
+  "version": "1.2.4",
+  "description": "Lightweight, high-performance, zero-dependency, hardened polyfill for the TC39 Pipeline Operator.",
+  "author": "Aries Harbinger",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/harnuma9/modify-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harnuma9/modify-js.git"
+  },
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://harnuma9.github.io/donate/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/harnuma9/modify-js/issues"
+  },
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./dist/index.min.js",
+      "require": "./dist/index.min.js"
+    }
+  },
+  "engines": {
+    "node": ">=16.11.0"
+  },
+  "scripts": {
+    "build": "bash update.sh",
+    "verify": "bash verify.sh",
+    "test": "node --test ./test/test_suite.js",
+    "check": "npm run test && npm run verify",
+    "prepublishOnly": "npm run check"
+  },
+  "keywords": [
+    "pipeline",
+    "lightweight",
+    "functional",
+    "chaining",
+    "utility",
+    "polyfill",
+    "hardened",
+    "tc39",
+    "fluent-interface"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typedoc": "^0.27.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

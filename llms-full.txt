@@ -1,0 +1,1812 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+# File Summary
+
+## Purpose
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+## File Format
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  a. A header with the file path (## File: path/to/file)
+  b. The full contents of the file in a code block
+
+## Usage Guidelines
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+## Notes
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: .git/**, .github/**, node_modules/**, dist/**, docs/**, temp/**, **/*.sh, **/*.png, **/*.ico, **/*.svg, **/*.sha256, **/*.map, **/*.min.js, **/*.eot, **/*.ttf, **/*.woff*
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+# Directory Structure
+```
+src/
+  index.d.ts
+  index.js
+test/
+  test_suite.js
+.gitignore
+.nomedia
+.npmignore
+index.html
+LICENSE
+package.json
+README.md
+```
+
+# Files
+
+## File: src/index.d.ts
+````typescript
+export function zeroBuf(...args: (Buffer | any)[]): void;
+/**
+ * A "Silent" or empty shell version of Pipe that discards all operations.
+ * Typically used for short-circuiting chains via exitWhen.
+ * @class SilentPipe
+ */
+export class SilentPipe {
+    constructor(val: any);
+    modify(): this;
+    _p(): this;
+    $p(): this;
+    mutate(): this;
+    _m(): this;
+    $m(): this;
+    tryModify(): this;
+    _t(): this;
+    $t(): this;
+    tryMutate(): this;
+    _tm(): this;
+    $tm(): this;
+    tapWhen(): this;
+    _w(): this;
+    $w(): this;
+    exitWhen(): this;
+    _x(): this;
+    $x(): this;
+    alterValue(): this;
+    _al(): this;
+    $al(): this;
+    /**
+     * Resolves the captured short-circuit value and freezes the instance.
+     * @param {any} [def] - Fallback default value if internal resolution yields undefined.
+     * @param {boolean} [lock=true] - Structural signature match for framework parity.
+     * @returns {any}
+     * @private
+     */
+    private out;
+    _o(def: any, lock: any): any;
+    $o(def: any, lock: any): any;
+    isLocked(): boolean;
+    _l(): boolean;
+    $l(): boolean;
+    #private;
+}
+/**
+ * Represents a secure, stateful container for functional transformations.
+ * @class Pipe
+ */
+export class Pipe {
+    /**
+     * Creates an instance of Pipe.
+     * @param {any} val - The initial value to wrap.
+     * @param {boolean} [isWipe=false] - Wipe internal value that might
+     * be a Buffer, Uint arrays, or ArrayBuffer, before overwriting it
+     * with a new value. Can be prone to bugs if you are still handling these values mid-chain.
+     */
+    constructor(val: any, isWipe?: boolean);
+    /**
+     * Passes the internal value through a transformation function.
+     * Updates the internal state and returns the same Pipe instance.
+     * @method modify
+     * @param {ModifyCallback<any, any>} fn - The transformation function to execute.
+     * @returns {this} The current Pipe instance for further chaining.
+     * @throws {TypeError} If the provided argument is not a function.
+     */
+    modify(fn: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link modify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _p(fn: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link modify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $p(fn: ModifyCallback<any, any>): this;
+    /**
+     * Executes a side-effect or mutation on the internal value without replacing it.
+     * The internal value remains the same object/primitive, updated by the callback.
+     * @method mutate
+     * @param {ModifyCallback<any, any>} fn - The mutation function to execute.
+     * @returns {this} The current Pipe instance for further chaining.
+     * @throws {TypeError} If the provided argument is not a function.
+     */
+    mutate(fn: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link mutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _m(fn: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link mutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $m(fn: ModifyCallback<any, any>): this;
+    /**
+     * Attempts a transformation function. If it throws an error and the fallback is a function,
+     * executes the fallback to resolve a new value. Otherwise, assigns the fallback value directly.
+     * @method tryModify
+     * @param {ModifyCallback<any, any>} fn - The transformation function to attempt.
+     * @param {any|Function} [fallback] - Dynamic recovery function or static fallback value.
+     * @returns {this}
+     * @throws {TypeError} If the primary argument is not a function.
+     */
+    tryModify(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link tryModify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _t(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link tryModify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $t(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Attempts a mutation or side-effect. If it throws an error and a fallback function is provided,
+     * executes the fallback for side-effect recovery. Otherwise, optionally swaps the internal value.
+     * @method tryMutate
+     * @param {ModifyCallback<any, any>} fn - The mutation function to attempt.
+     * @param {any|Function} [fallback] - Recovery error-handling function or optional static swap value.
+     * @returns {this}
+     * @throws {TypeError} If the primary argument is not a function.
+     */
+    tryMutate(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link tryMutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _tm(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link tryMutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $tm(fn: ModifyCallback<any, any>, fallback?: any | Function): this;
+    /**
+     * Executes a side-effect or transforms the internal value
+     * only if a predicate function evaluates to true.
+     * @method tapWhen
+     * @param {PredicateCallback<any>} predicate - Condition to check.
+     * @param {boolean|ModifyCallback<any, any>} isModify - Can be a boolean flag, or skipped entirely to default to true.
+     * @param {ModifyCallback<any, any>} [fn] - The execution function.
+     * @returns {this}
+     */
+    tapWhen(predicate: PredicateCallback<any>, isModify?: boolean | ModifyCallback<any, any>, fn?: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link tapWhen}
+     * @param {PredicateCallback<any>} predicate
+     * @param {boolean|ModifyCallback<any, any>} [isModify=true]
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _w(predicate: PredicateCallback<any>, isModify?: boolean | ModifyCallback<any, any>, fn: ModifyCallback<any, any>): this;
+    /**
+     * Shorthand alias for {@link tapWhen}
+     * @param {PredicateCallback<any>} predicate
+     * @param {boolean|ModifyCallback<any, any>} [isModify=true]
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $w(predicate: PredicateCallback<any>, isModify?: boolean | ModifyCallback<any, any>, fn: ModifyCallback<any, any>): this;
+    /**
+     * Executes a transformation predicate. If the condition is met or the result is not undefined,
+     * returns a SilentPipe instance to short-circuit the chain.
+     * Supports argument shifting if the boolean flag is omitted.
+     * @method exitWhen
+     * @param {ModifyCallback<any, any>} fn
+     * @param {boolean|any|Function} [isModify=true] Update internal value, or skipped to act as fallback function.
+     * @param {any|Function} [fallback] Optional recovery mechanism if primary execution throws.
+     * @returns {SilentPipe|this}
+     */
+    exitWhen(fn: ModifyCallback<any, any>, isModify?: boolean | any | Function, fallback?: any | Function): SilentPipe | this;
+    /**
+     * Shorthand alias for {@link exitWhen}
+     * @param {ModifyCallback<any, any>} fn
+     * @param {boolean|any|Function} [isModify=true]
+     * @param {any|Function} [fallback]
+     * @returns {SilentPipe|this}
+     */
+    _x(fn: ModifyCallback<any, any>, isModify?: boolean | any | Function, fallback?: any | Function): SilentPipe | this;
+    /**
+     * Shorthand alias for {@link exitWhen}
+     * @param {ModifyCallback<any, any>} fn
+     * @param {boolean|any|Function} [isModify=true]
+     * @param {any|Function} [fallback]
+     * @returns {SilentPipe|this}
+     */
+    $x(fn: ModifyCallback<any, any>, isModify?: boolean | any | Function, fallback?: any | Function): SilentPipe | this;
+    /**
+     * Surgically updates a single property or element inside an object, array, or buffer.
+     * Supports dot-notation path traversing for deep object hierarchies and dynamically
+     * supports intermediate object spawning if enabled.
+     * @method alterValue
+     * @param {string|number} nameKey - The object key string (supporting dot-notation paths like 'a.b.c') or array/buffer index number.
+     * @param {any|Function} val - The replacement value or an updater function receiving the current localized property value.
+     * @param {boolean|any|Function} [isCreateNestedObj=true] - Flag to enable object generation, or shifted into fallback parameter if function.
+     * @param {any|Function} [fallback] - Dynamic recovery function or static fallback value to assign if an operation throws.
+     * @returns {this} The current Pipe instance for further chaining.
+     */
+    alterValue(nameKey: string | number, val: any | Function, isCreateNestedObj?: boolean | any | Function, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link alterValue}.
+     * @param {string|number} nameKey
+     * @param {any|Function} val
+     * @param {boolean|any|Function} [isCreateNestedObj=true]
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _al(nameKey: string | number, val: any | Function, isCreateNestedObj?: boolean | any | Function, fallback?: any | Function): this;
+    /**
+     * Shorthand alias for {@link alterValue}.
+     * @param {string|number} nameKey
+     * @param {any|Function} val
+     * @param {boolean|any|Function} [isCreateNestedObj=true]
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $al(nameKey: string | number, val: any | Function, isCreateNestedObj?: boolean | any | Function, fallback?: any | Function): this;
+    /**
+     * Extracts the value from the pipe and terminates the chain.
+     * If the internal value is undefined, the provided default fallback is returned.
+     * @method out
+     * @param {any} [def] - Optional fallback value if the pipe's value is undefined.
+     * @param {boolean} [lock=true] - If true, clears the internal state and freezes the instance.
+     * @returns {any} The final transformed value or the default fallback.
+     */
+    out(def?: any, lock?: boolean): any;
+    /**
+     * Shorthand alias for {@link out}.
+     * @param {any} [def]
+     * @param {boolean} [lock=true]
+     * @returns {any}
+     */
+    _o(def?: any, lock?: boolean): any;
+    /**
+     * Shorthand alias for {@link out}.
+     * @param {any} [def]
+     * @param {boolean} [lock=true]
+     * @returns {any}
+     */
+    $o(def?: any, lock?: boolean): any;
+    /**
+     * Checks if the pipe instance has been locked and frozen.
+     * A locked pipe can no longer be modified or used to extract values.
+     * @method isLocked
+     * @returns {boolean} True if the instance is frozen, false otherwise.
+     */
+    isLocked(): boolean;
+    /** Shorthand alias for {@link isLocked} */
+    _l(): boolean;
+    /** Shorthand alias for {@link isLocked} */
+    $l(): boolean;
+    #private;
+}
+export function chain_(val: any, isWipe: boolean): Pipe;
+export function chain$(val: any, isWipe: boolean): Pipe;
+export default chain_;
+/**
+ * A transformation function used within the pipeline.
+ */
+export type ModifyCallback<T, R> = (value: T) => R;
+/**
+ * A predicate validation condition check.
+ */
+export type PredicateCallback<T> = (value: T) => boolean;
+````
+
+## File: src/index.js
+````javascript
+/**
+ * Copyright 2026 Aries Harbinger
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @file Optimized utility for functional chaining and data transformation.
+ * @summary Lightweight, high-performance, zero-dependency, hardened polyfill for the TC39 Pipeline Operator.
+ * @author Aries Harbinger
+ * @license Apache-2.0
+ */
+
+/**
+ * A transformation function used within the pipeline.
+ * @template T, R
+ * @callback ModifyCallback
+ * @param {T} value - The current value in the pipeline.
+ * @returns {R} The transformed value.
+ */
+
+/**
+ * A predicate validation condition check.
+ * @template T
+ * @callback PredicateCallback
+ * @param {T} value - The current value in the pipeline.
+ * @returns {boolean} True if the condition passes, false otherwise.
+ */
+const __UNDEFINED__ = void 0;
+
+/**
+ * Validates whether a value is a function.
+ * @param {any} val - The value to check.
+ * @returns {boolean} True if the value is a function, false otherwise.
+ * @private
+ */
+const isFunction = (val) => typeof val === 'function';
+
+/**
+ * Overwrites buffers/arrays with zeros.
+ * @param {...(Buffer|any)} args - Any values, will only wipe the valid ones.
+ * @example
+ * zeroBuf(buf1, buf2, arr)
+ * @returns {void}
+ */
+export const zeroBuf = (...args) => {
+    for (const buf of args) {
+        buf?.fill?.(0);
+        (buf instanceof ArrayBuffer) &&
+            new Uint8Array(buf).fill(0);
+    }
+};
+
+
+/**
+ * A "Silent" or empty shell version of Pipe that discards all operations.
+ * Typically used for short-circuiting chains via exitWhen.
+ * @class SilentPipe
+ */
+export class SilentPipe {
+    #value;
+    #extracted;
+    #cache;
+
+    constructor(val) {
+        this.#value = isFunction(val) ? val() : val;
+        this.#extracted = false;
+    }
+
+    modify() { return this; }
+    _p() { return this; }
+    $p() { return this; }
+
+    mutate() { return this; }
+    _m() { return this; }
+    $m() { return this; }
+
+    tryModify() { return this; }
+    _t() { return this; }
+    $t() { return this; }
+
+    tryMutate() { return this; }
+    _tm() { return this; }
+    $tm() { return this; }
+
+    tapWhen() { return this; }
+    _w() { return this; }
+    $w() { return this; }
+
+    exitWhen() { return this; }
+    _x() { return this; }
+    $x() { return this; }
+
+    alterValue() { return this; }
+    _al() { return this; }
+    $al() { return this; }
+
+    /**
+     * Resolves the captured short-circuit value and freezes the instance.
+     * @param {any} [def] - Fallback default value if internal resolution yields undefined.
+     * @param {boolean} [lock=true] - Structural signature match for framework parity.
+     * @returns {any}
+     * @private
+     */
+    out(def, lock = true) {
+        if (this.#extracted) return this.#cache === __UNDEFINED__ ? def : this.#cache;
+        try {
+            const res = isFunction(this.#value) ? this.#value() : this.#value;
+            this.#cache = res === __UNDEFINED__ ? def : res;
+            this.#extracted = true;
+            return this.#cache;
+        }
+
+        finally { lock && Object.freeze((this.#value = __UNDEFINED__, this)); }
+    }
+    _o(def, lock) { return this.out(def, lock); }
+    $o(def, lock) { return this.out(def, lock); }
+
+    isLocked() { return Object.isFrozen(this); }
+    _l() { return this.isLocked(); }
+    $l() { return this.isLocked(); }
+}
+
+
+/**
+ * Represents a secure, stateful container for functional transformations.
+ * @class Pipe
+ */
+export class Pipe {
+    /**
+     * Whether to include wiping previous values before any replacements.
+     * @type {boolean}
+     * @private
+     */
+    #isWipe;
+
+    /**
+     * The internal value held by the pipe.
+     * @type {any}
+     * @private
+     */
+    #value;
+
+    /**
+     * Internal state manager that conditionally updates the wrapped value 
+     * and returns the specified fallback or the current Pipe instance.
+     * @param {any} val - The potential new value to assign if it is not undefined.
+     * @param {any} [fallback] - An optional alternative return value (e.g., a SilentPipe instance).
+     * @returns {this|any} The provided fallback if present, otherwise the current Pipe instance for chaining.
+     * @private
+     */
+    #define(val, fallback) {
+        if (val !== __UNDEFINED__) 
+            this.#value = (this.#isWipe && zeroBuf(this.#value), val);
+        return fallback ?? this;
+    }
+
+    /**
+     * Creates an instance of Pipe.
+     * @param {any} val - The initial value to wrap.
+     * @param {boolean} [isWipe=false] - Wipe internal value that might
+     * be a Buffer, Uint arrays, or ArrayBuffer, before overwriting it
+     * with a new value. Can be prone to bugs if you are still handling these values mid-chain.
+     */
+    constructor(val, isWipe = false) {
+        this.#define(isFunction(val) ? val() : val);
+        this.#isWipe = !!isWipe;
+    }
+
+
+    /**
+     * Passes the internal value through a transformation function.
+     * Updates the internal state and returns the same Pipe instance.
+     * @method modify
+     * @param {ModifyCallback<any, any>} fn - The transformation function to execute.
+     * @returns {this} The current Pipe instance for further chaining.
+     * @throws {TypeError} If the provided argument is not a function.
+     */
+    modify(fn) {
+        if (Object.isFrozen(this)) return this;
+        if (!isFunction(fn))
+            throw new TypeError(`[modify-js] Expected a function, but received: ${typeof fn}`);
+
+        return this.#define(fn(this.#value));
+    }
+
+    /**
+     * Shorthand alias for {@link modify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _p(fn) { return this.modify(fn); }
+
+    /**
+     * Shorthand alias for {@link modify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $p(fn) { return this.modify(fn); }
+
+
+    /**
+     * Executes a side-effect or mutation on the internal value without replacing it.
+     * The internal value remains the same object/primitive, updated by the callback.
+     * @method mutate
+     * @param {ModifyCallback<any, any>} fn - The mutation function to execute.
+     * @returns {this} The current Pipe instance for further chaining.
+     * @throws {TypeError} If the provided argument is not a function.
+     */
+    mutate(fn) {
+        if (Object.isFrozen(this)) return this;
+        if (!isFunction(fn))
+            throw new TypeError(`[modify-js] Expected a function, but received: ${typeof fn}`);
+
+        return (fn(this.#value), this);
+    }
+
+    /**
+     * Shorthand alias for {@link mutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _m(fn) { return this.mutate(fn); }
+
+    /**
+     * Shorthand alias for {@link mutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $m(fn) { return this.mutate(fn); }
+
+
+    /**
+     * Attempts a transformation function. If it throws an error and the fallback is a function, 
+     * executes the fallback to resolve a new value. Otherwise, assigns the fallback value directly.
+     * @method tryModify
+     * @param {ModifyCallback<any, any>} fn - The transformation function to attempt.
+     * @param {any|Function} [fallback] - Dynamic recovery function or static fallback value.
+     * @returns {this}
+     * @throws {TypeError} If the primary argument is not a function.
+     */
+    tryModify(fn, fallback) {
+        if (Object.isFrozen(this)) return this;
+        if (!isFunction(fn))
+            throw new TypeError(`[modify-js] Expected a function, but received: ${typeof fn}`);
+
+        try { this.#define(fn(this.#value)); } 
+
+        catch (err) { 
+            if (isFunction(fallback)) {
+                this.#define(fallback(err, this.#value));
+            } 
+            else if (__UNDEFINED__ !== fallback) {
+                this.#define(fallback);
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     * Shorthand alias for {@link tryModify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _t(fn, fallback) { return this.tryModify(fn, fallback); }
+
+    /**
+     * Shorthand alias for {@link tryModify}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $t(fn, fallback) { return this.tryModify(fn, fallback); }
+
+
+    /**
+     * Attempts a mutation or side-effect. If it throws an error and a fallback function is provided,
+     * executes the fallback for side-effect recovery. Otherwise, optionally swaps the internal value.
+     * @method tryMutate
+     * @param {ModifyCallback<any, any>} fn - The mutation function to attempt.
+     * @param {any|Function} [fallback] - Recovery error-handling function or optional static swap value.
+     * @returns {this}
+     * @throws {TypeError} If the primary argument is not a function.
+     */
+    tryMutate(fn, fallback) {
+        if (Object.isFrozen(this)) return this;
+        if (!isFunction(fn))
+            throw new TypeError(`[modify-js] Expected a function, but received: ${typeof fn}`);
+
+        try { fn(this.#value); } 
+
+        catch (err) {
+            if (isFunction(fallback)) {
+                fallback(err, this.#value);
+            } 
+            else if (fallback !== __UNDEFINED__) {
+                this.#define(fallback);
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     * Shorthand alias for {@link tryMutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _tm(fn, fallback) { return this.tryMutate(fn, fallback); }
+
+    /**
+     * Shorthand alias for {@link tryMutate}.
+     * @param {ModifyCallback<any, any>} fn
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $tm(fn, fallback) { return this.tryMutate(fn, fallback); }
+
+
+    /**
+     * Executes a side-effect or transforms the internal value 
+     * only if a predicate function evaluates to true.
+     * @method tapWhen
+     * @param {PredicateCallback<any>} predicate - Condition to check.
+     * @param {boolean|ModifyCallback<any, any>} isModify - Can be a boolean flag, or skipped entirely to default to true.
+     * @param {ModifyCallback<any, any>} [fn] - The execution function.
+     * @returns {this}
+     */
+    tapWhen(predicate, isModify = true, fn) {
+        if (Object.isFrozen(this)) return this;
+
+        // Handle argument shifting if the user skipped the boolean parameter
+        let realIsModify = isModify;
+        let realFn = fn;
+        if (isFunction(isModify)) {
+            realIsModify = true;
+            realFn = isModify;
+        }
+
+        if (!isFunction(predicate) || !isFunction(realFn))
+            throw new TypeError('[modify-js] Expected predicate and callback to be functions.');
+
+        if (predicate(this.#value))
+            realIsModify
+                ? this.#define(realFn(this.#value))
+                : realFn(this.#value);
+
+        return this;
+    }
+
+    /**
+     * Shorthand alias for {@link tapWhen}
+     * @param {PredicateCallback<any>} predicate
+     * @param {boolean|ModifyCallback<any, any>} [isModify=true]
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    _w(predicate, isModify, fn) { return this.tapWhen(predicate, isModify, fn); }
+
+    /**
+     * Shorthand alias for {@link tapWhen}
+     * @param {PredicateCallback<any>} predicate
+     * @param {boolean|ModifyCallback<any, any>} [isModify=true]
+     * @param {ModifyCallback<any, any>} fn
+     * @returns {this}
+     */
+    $w(predicate, isModify, fn) { return this.tapWhen(predicate, isModify, fn); }
+
+
+    /**
+     * Executes a transformation predicate. If the condition is met or the result is not undefined, 
+     * returns a SilentPipe instance to short-circuit the chain.
+     * Supports argument shifting if the boolean flag is omitted.
+     * @method exitWhen
+     * @param {ModifyCallback<any, any>} fn 
+     * @param {boolean|any|Function} [isModify=true] Update internal value, or skipped to act as fallback function.
+     * @param {any|Function} [fallback] Optional recovery mechanism if primary execution throws.
+     * @returns {SilentPipe|this}
+     */
+    exitWhen(fn, isModify = true, fallback) {
+        if (Object.isFrozen(this)) return this;
+        if (!isFunction(fn))
+            throw new TypeError(`[modify-js] Expected a function, but received: ${typeof fn}`);
+
+        // Handle argument shifting if the user skipped the boolean parameter
+        let realIsModify = isModify;
+        let realFallback = fallback;
+        if (isFunction(isModify)) {
+            realIsModify = true;
+            realFallback = isModify;
+        }
+
+        try {
+            const res = fn(this.#value);
+            const exitValue = realIsModify ? res : this.#value;
+
+            realIsModify && this.#define(res);
+
+            this.out(__UNDEFINED__, true);
+            return new SilentPipe(() => exitValue);
+        }
+
+        catch (err) {
+            if (realFallback !== __UNDEFINED__) {
+                const tmp = isFunction(realFallback) ? realFallback(err, this.#value) : realFallback;
+                const exitValue = realIsModify ? tmp : this.#value;
+
+                realIsModify && this.#define(tmp);
+
+                this.out(__UNDEFINED__, true);
+                return new SilentPipe(() => exitValue);
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     * Shorthand alias for {@link exitWhen}
+     * @param {ModifyCallback<any, any>} fn
+     * @param {boolean|any|Function} [isModify=true]
+     * @param {any|Function} [fallback]
+     * @returns {SilentPipe|this}
+     */
+    _x(fn, isModify, fallback) { return this.exitWhen(fn, isModify, fallback); }
+
+    /**
+     * Shorthand alias for {@link exitWhen}
+     * @param {ModifyCallback<any, any>} fn
+     * @param {boolean|any|Function} [isModify=true]
+     * @param {any|Function} [fallback]
+     * @returns {SilentPipe|this}
+     */
+    $x(fn, isModify, fallback) { return this.exitWhen(fn, isModify, fallback); }
+
+
+    /**
+     * Surgically updates a single property or element inside an object, array, or buffer.
+     * Supports dot-notation path traversing for deep object hierarchies and dynamically 
+     * supports intermediate object spawning if enabled.
+     * @method alterValue
+     * @param {string|number} nameKey - The object key string (supporting dot-notation paths like 'a.b.c') or array/buffer index number.
+     * @param {any|Function} val - The replacement value or an updater function receiving the current localized property value.
+     * @param {boolean|any|Function} [isCreateNestedObj=true] - Flag to enable object generation, or shifted into fallback parameter if function.
+     * @param {any|Function} [fallback] - Dynamic recovery function or static fallback value to assign if an operation throws.
+     * @returns {this} The current Pipe instance for further chaining.
+     */
+    alterValue(nameKey, val, isCreateNestedObj = true, fallback) {
+        if (Object.isFrozen(this)) return this;
+
+        // Handle argument shifting if the user skipped the boolean parameter
+        let realCreateObj = isCreateNestedObj;
+        let realFallback = fallback;
+        if (isFunction(isCreateNestedObj)) {
+            realCreateObj = true;
+            realFallback = isCreateNestedObj;
+        }
+
+        try {
+            if (typeof nameKey === 'string' && nameKey.includes('.')) {
+                const parts = nameKey.split('.');
+                const lastKey = parts.pop();
+
+                // Walk down the object tree until we hit the parent of the target key
+                let current = this.#value;
+                for (const part of parts) {
+                    if (realCreateObj && (current[part] === __UNDEFINED__))
+                        current[part] = {}; // Safely create missing structural objects on the fly
+                    current = current[part];
+                }
+
+                current[lastKey] = isFunction(val) ? val(current[lastKey]) : val;
+            } else {
+                this.#value[nameKey] = isFunction(val)
+                    ? val(this.#value[nameKey])
+                    : val;
+            }
+        } 
+
+        catch (err) {
+            if (realFallback !== __UNDEFINED__)
+                isFunction(realFallback)
+                    ? this.#define(realFallback(err, this.#value))
+                    : this.#define(realFallback);
+        }
+
+        return this;
+    }
+
+    /**
+     * Shorthand alias for {@link alterValue}.
+     * @param {string|number} nameKey
+     * @param {any|Function} val
+     * @param {boolean|any|Function} [isCreateNestedObj=true]
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    _al(nameKey, val, isCreateNestedObj, fallback) { return this.alterValue(nameKey, val, isCreateNestedObj, fallback); }
+
+    /**
+     * Shorthand alias for {@link alterValue}.
+     * @param {string|number} nameKey
+     * @param {any|Function} val
+     * @param {boolean|any|Function} [isCreateNestedObj=true]
+     * @param {any|Function} [fallback]
+     * @returns {this}
+     */
+    $al(nameKey, val, isCreateNestedObj, fallback) { return this.alterValue(nameKey, val, isCreateNestedObj, fallback); }
+
+
+    /**
+     * Extracts the value from the pipe and terminates the chain.
+     * If the internal value is undefined, the provided default fallback is returned.
+     * @method out
+     * @param {any} [def] - Optional fallback value if the pipe's value is undefined.
+     * @param {boolean} [lock=true] - If true, clears the internal state and freezes the instance.
+     * @returns {any} The final transformed value or the default fallback.
+     */
+    out(def, lock = true) {
+        try { return this.#value === __UNDEFINED__ ? def : this.#value; }
+        finally { lock && Object.freeze((this.#value = __UNDEFINED__, this)); }
+    }
+
+    /**
+     * Shorthand alias for {@link out}.
+     * @param {any} [def]
+     * @param {boolean} [lock=true]
+     * @returns {any}
+     */
+    _o(def, lock) { return this.out(def, lock); }
+
+    /**
+     * Shorthand alias for {@link out}.
+     * @param {any} [def]
+     * @param {boolean} [lock=true]
+     * @returns {any}
+     */
+    $o(def, lock) { return this.out(def, lock); }
+
+
+    /**
+     * Checks if the pipe instance has been locked and frozen.
+     * A locked pipe can no longer be modified or used to extract values.
+     * @method isLocked
+     * @returns {boolean} True if the instance is frozen, false otherwise.
+     */
+    isLocked() { return Object.isFrozen(this); }
+
+    /** Shorthand alias for {@link isLocked} */
+    _l() { return this.isLocked(); }
+
+    /** Shorthand alias for {@link isLocked} */
+    $l() { return this.isLocked(); }
+}
+
+// Freeze the pipe
+Object.freeze(Pipe);
+
+
+/**
+ * Entry point to create a new Pipe instance.
+ * @function chain_
+ * @param {any} val - The value to start the pipeline with.
+ * @param {boolean} isWipe - Whether to include wiping previous values before any replacements.
+ * @returns {Pipe} A new Pipe container.
+ * @example
+ * const result = chain_(" hello ")
+ *      ._p(s => s.trim())
+ *      ._p(s => s.toUpperCase())
+ *      .out(); // "HELLO"
+ */
+export const chain_ = (val, isWipe) => new Pipe(val, isWipe);
+
+/**
+ * Shorthand alias for {@link chain_}.
+ * @function chain$
+ * @param {any} val - The value to start the pipeline with.
+ * @param {boolean} isWipe - Whether to include wiping previous values before any replacements.
+ * @returns {Pipe} A new Pipe container.
+ */
+export const chain$ = (val, isWipe) => new Pipe(val, isWipe);
+
+export default chain_;
+````
+
+## File: test/test_suite.js
+````javascript
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { Pipe, chain_, chain$ } from '@stless/modify-js';
+
+/**
+ * @stless/modify-js - Official Test Suite
+ * Focus: Security, Performance, Null-Safety, and State Lifecycle
+ */
+test('Core Initialization & Chaining', async (t) => {
+  await t.test('Linear Transformation', () => {
+    const result = new Pipe("  user  ")
+      ._p(s => s.trim())
+      .$p(s => s.toUpperCase())
+      .modify(s => `ID_${s}`)
+      .out();
+
+    assert.strictEqual(result, "ID_USER", 'Pipeline should transform value linearly');
+  });
+});
+
+test('Safety & Security (Hardened Features)', async (t) => {
+  await t.test('Private Value Encapsulation', () => {
+    const p = chain_("secret");
+    assert.strictEqual(p.value, undefined, 'Internal value must not be accessible');
+  });
+
+  await t.test('Auto-Locking & Freezing (Security)', () => {
+    const p = chain_(100);
+    p.out(); 
+    assert.ok(Object.isFrozen(p), 'Instance must be frozen after .out()');
+    assert.strictEqual(p.isLocked(), true, '.isLocked() should return true');
+    
+    // JavaScript classes are strict by default, but let's test the side effect
+    p.modify(x => 999); 
+    // If it's frozen and the value was wiped, it stays wiped
+    assert.strictEqual(p.isLocked(), true, 'Should remain locked');
+  });
+
+  await t.test('Memory Wiping (Data Sanitization)', () => {
+    const p = chain_({ sensitive: "data" });
+    const result1 = p.out(); // First exit: returns data, wipes internal state
+    assert.deepEqual(result1, { sensitive: "data" });
+
+    // Second exit: Should return the default/null because state was wiped
+    const result2 = p.out("RECOVERED");
+    assert.strictEqual(result2, "RECOVERED", 'Should return default because internal state was wiped');
+  });
+});
+
+test('Null & Undefined Handling (The "Universal" Test)', async (t) => {
+  await t.test('Handling Null with Default', () => {
+    const result = chain_(null)
+      ._p(v => v + " added") // null + " added" = "null added"
+      .out("fallback");
+    assert.strictEqual(result, "null added");
+  });
+
+  await t.test('Null Fallback at Exit', () => {
+    const result = chain$(null).out("SAFE");
+    assert.strictEqual(result, null, 'Should return null, ignoring fallback');
+  });
+
+  await t.test('Undefined Fallback at Exit', () => {
+    const result = chain$(undefined).out(404);
+    assert.strictEqual(result, 404, 'Should return default if value is undefined');
+  });
+});
+
+test('Error Handling - tryModify Suite', async (t) => {
+  await t.test('tryModify - Smooth Execution (No Error)', () => {
+    const result = chain_(10)
+      ._t(x => x * 2, 0)
+      .out();
+    assert.strictEqual(result, 20, 'Should transform successfully if no error occurs');
+  });
+
+  await t.test('tryModify - Dynamic Recovery (Function Fallback)', () => {
+    const result = chain_("invalid_json")
+      ._t(
+        val => JSON.parse(val), 
+        (err, currentVal) => ({ error: err.message, raw: currentVal })
+      )
+      .out();
+    assert.ok(result.error, 'Fallback function should execute on error');
+    assert.strictEqual(result.raw, "invalid_json", 'Fallback should receive the current pipeline value');
+  });
+
+  await t.test('tryModify - Static Value Fallback', () => {
+    const result = chain_(5)
+      .$t(x => { throw new Error('Boom'); }, 999).out();
+    assert.strictEqual(result, 999, 'Should assign the static fallback value on error');
+  });
+
+  await t.test('tryModify - Implicit Safe Fallback (No Argument)', () => {
+    const result = chain_("preserve_me")
+      ._t(x => { throw new Error('Boom'); })
+      .out();
+    assert.strictEqual(result, "preserve_me", 'Should preserve current pipeline state if fallback is omitted');
+  });
+});
+
+test('Error Handling - tryMutate Suite', async (t) => {
+  await t.test('tryMutate - Isolation of Side-Effects', () => {
+    let sideEffect = 0;
+    const result = chain_({ score: 10 })
+      ._tm(obj => { sideEffect = obj.score * 2; }).out();
+    assert.strictEqual(sideEffect, 20, 'Side-effect should run smoothly');
+    assert.deepEqual(result, { score: 10 }, 'Pipeline value must remain unreplaced');
+  });
+
+  await t.test('tryMutate - Intercept and Recovery Function', () => {
+    let errorCaught = false;
+    const result = chain_("state")._tm(
+        val => { throw new Error('Mutation crash'); },
+        (err, currentVal) => {
+          if (err.message === 'Mutation crash' && currentVal === "state") {
+            errorCaught = true;
+          }
+        }
+      ).out();
+    assert.strictEqual(errorCaught, true, 'Fallback tracking function should catch the exact error context');
+    assert.strictEqual(result, "state", 'Pipeline value must remain unchanged after mutation error recovery');
+  });
+
+  await t.test('tryMutate - Implicit Safe State Protection', () => {
+    const result = chain_("immortal_value")
+      .$tm(val => { throw new Error('Crash without fallback argument'); }).out();
+    assert.strictEqual(result, "immortal_value", 'Pipeline value must not be wiped out or set to undefined on side-effect crashes');
+  });
+});
+
+test('Structural Manipulation - alterValue Suite', async (t) => {
+  await t.test('Deep Path Spawning & Updating', () => {
+    const result = chain_({})
+      ._al('a.b.c', 1)
+      ._al('a.b.c', val => val + 1)
+      .out();
+    assert.deepEqual(result, { a: { b: { c: 2 } } });
+  });
+
+  await t.test('Fallback on Error', () => {
+    const result = chain_(null) // Path lookup on null will throw
+      ._al('a.b', 1, true, () => 'RECOVERED').out();
+    assert.strictEqual(result, 'RECOVERED');
+  });
+});
+
+test('Conditional Control Flow', async (t) => {
+  await t.test('tapWhen - Conditional Detour', () => {
+    let touched = false;
+    const result = chain_({ val: 10 })
+      ._w(d => d.val === 10, d => { touched = true; d.val = 20; }).out();
+    assert.strictEqual(touched, true);
+    assert.strictEqual(result.val, 20);
+  });
+
+  await t.test('exitWhen - Early Short-Circuit', () => {
+    const result = chain_({ val: 5 })
+      ._x(d => d.val === 5, () => "BAILOUT")
+      // Should be skipped these:
+      ._m(d => console.log(d))
+      ._p(d => d.val = 999)
+      .out();
+    assert.strictEqual(result, true);
+  });
+});
+
+test('Advanced Lifecycle (Stateful Chaining)', async (t) => {
+  await t.test('Forgiving Mode (lock = false)', () => {
+    const p = chain$(10);
+    const first = p.modify(x => x + 5).out(0, false);
+    assert.strictEqual(first, 15, 'Should return value');
+    assert.strictEqual(p.isLocked(), false, 'Pipe should NOT be locked');
+    
+    // Continue using the SAME instance
+    const second = p.modify(x => 100).out(); // Now lock it
+    assert.strictEqual(second, 100);
+    assert.strictEqual(p.isLocked(), true, 'Pipe should now be locked');
+  });
+});
+````
+
+## File: .gitignore
+````
+# Standard-Verzeichnisse und Abhängigkeiten
+node_modules/
+temp/
+
+# Systemdateien und Locks
+.DS_Store
+````
+
+## File: .nomedia
+````
+
+````
+
+## File: .npmignore
+````
+# Standard-Verzeichnisse und Abhängigkeiten
+.git/
+.github/
+docs/
+node_modules/
+media/
+temp/
+test/
+
+# SHA256 Prüfsummen ausschließen
+src/**/*.sha256
+dist/**/*.sha256
+**/*.sha256
+*.sha256
+
+# Systemdateien und Locks
+package-lock.json
+.DS_Store
+.gitignore
+
+# Automatisierungsskript
+index.html
+llms-full.txt
+update.sh
+verify.sh
+````
+
+## File: index.html
+````html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/harnuma9/donate@main/assets/favicon.ico?v=1" />
+    <meta http-equiv="refresh" content="0; url=./docs/index.html" />
+  </head>
+  <body>
+    <p>Redirecting to documentation...</p>
+  </body>
+</html>
+````
+
+## File: LICENSE
+````
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2026 Aries Harbinger
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       https://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+````
+
+## File: package.json
+````json
+{
+  "name": "@stless/modify-js",
+  "version": "1.2.4",
+  "description": "Lightweight, high-performance, zero-dependency, hardened polyfill for the TC39 Pipeline Operator.",
+  "author": "Aries Harbinger",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/harnuma9/modify-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harnuma9/modify-js.git"
+  },
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://harnuma9.github.io/donate/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/harnuma9/modify-js/issues"
+  },
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./dist/index.min.js",
+      "require": "./dist/index.min.js"
+    }
+  },
+  "engines": {
+    "node": ">=16.11.0"
+  },
+  "scripts": {
+    "build": "bash update.sh",
+    "verify": "bash verify.sh",
+    "test": "node --test ./test/test_suite.js",
+    "check": "npm run test && npm run verify",
+    "prepublishOnly": "npm run check"
+  },
+  "keywords": [
+    "pipeline",
+    "lightweight",
+    "functional",
+    "chaining",
+    "utility",
+    "polyfill",
+    "hardened",
+    "tc39",
+    "fluent-interface"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typedoc": "^0.27.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
+````
+
+## File: README.md
+````markdown
+<div align="center">
+<img src="https://raw.githubusercontent.com/harnuma9/modify-js/refs/heads/main/media/banner.png" alt="Banner" width="1250">
+</div>
+
+<br />
+
+# @stless/modify-js
+
+[![npm version](https://img.shields.io/npm/v/@stless/modify-js.svg)](https://www.npmjs.com/package/@stless/modify-js)
+![Node.js](https://img.shields.io/badge/Node.js-%3E%3D16.11.0-green)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/harnuma9/modify-js/blob/main/LICENSE)
+![Verify Status](https://github.com/harnuma9/modify-js/actions/workflows/verify.yml/badge.svg)
+[![Socket Badge](https://badge.socket.dev/npm/package/@stless/modify-js/1.2.4)](https://badge.socket.dev/npm/package/@stless/modify-js/1.2.4)
+[![Donate](https://img.shields.io/badge/@Harnuma9-Donate-FF4D4D)](https://harnuma9.github.io/donate/)
+
+<br />
+
+`@stless/modify-js` is an opinionated, zero-dependency utility that implements functional piping via a stateful container, designed to provide a predictable alternative to the pending TC39 Pipeline Operator.
+
+It employs a defensive, immutable-adjacent architecture to manage state transitions and error boundaries across complex data transformations.
+
+<br />
+
+> **Full API context optimized for AI assistants and contributors** is available in [`llms-full.txt`](https://github.com/harnuma9/modify-js/blob/main/llms-full.txt).
+
+<br />
+<br />
+
+---
+
+<br />
+
+## 🚀 Getting Started
+
+### NPM
+
+```bash
+npm install @stless/modify-js
+```
+
+### Yarn
+
+```bash
+yarn add @stless/modify-js
+```
+
+### PNPM
+
+```bash
+pnpm add @stless/modify-js
+```
+
+<br />
+
+### Requirements
+
+* **Node.js**: `>=16.11.0` (For stable [ES2022 Private Field](https://dev.to/smitterhane/private-class-fields-in-javascript-es2022-3b8) support)
+
+* **Browser**: Modern evergreen browsers (Chrome 91+, Firefox 90+, Safari 15+)
+
+<br />
+<br />
+
+## 💡 Usage
+
+<br />
+
+### Pipeline Initialization and Usage
+
+Start a chain using `chain_` or its `chain$` alias. The input is encapsulated within a stateful `Pipe` instance, abstracting away the need for intermediate variable declarations.
+
+```javascript
+// ESM
+import chain_ from '@stless/modify-js';
+// or CJS
+const { default: chain_, chain$, zeroBuf } = require('@stless/modify-js'); 
+
+const result = chain_("  hello world  ")
+  ._p(s => s.trim())
+  .$p(s => s.toUpperCase())
+  .out(); // "HELLO WORLD"
+
+```
+
+<br />
+
+### Linear Transformation and Chaining
+
+Process data sequentially by passing functions to `modify` (`._p`, `.$p`). This style flattens complex data flows into a readable, top-to-bottom pipeline.
+
+```javascript
+import { Pipe } from '@stless/modify-js';
+
+const user = new Pipe(apiResponse)
+  ._p(res => res.data)
+  ._p(data => ({ ...data, timestamp: Date.now() }))
+  .out({ error: "No data found" }); // Returns fallback if internal state is undefined
+
+```
+
+<br />
+
+### Lifecycle and State Persistence
+
+By setting the second argument of `.out(def, lock)` to `false`, you can extract the current value while leaving the pipe unlocked for further operations. This allows you to "fork" or resume an existing chain.
+
+```javascript
+const a = chain$(100)
+  ._p(n => n * 4)
+  ._m(v => console.log(`Debug: ${v}`)) // Logging side-effect
+  ._p(n => n - 1);
+
+const val1 = a.out(null, false); // Extract without freezing
+
+// Resume the existing chain
+const val2 = a
+  .modify(n => n - 30)
+  .out(null, true); // Extract and permanently lock the instance
+
+console.log(val1); // 399
+console.log(val2); // 369
+
+```
+
+<br />
+
+### Side-Effect Management
+
+Use `mutate` (`._m`, `.$m`) to perform in-place updates or side-effects. Unlike `modify`, these methods ignore the return value and automatically pass the existing reference to the next step, removing the need for manual return statements.
+
+```javascript
+// Complex object preparation
+const processedUser = chain_(rawUserData)
+  ._p(parseJson)
+  ._m(user => {
+    user.lastAccess = Date.now();
+    user.isVerified = user.emailVerified && user.phoneVerified;
+    user.tags = [...new Set(user.tags || [])]; // Deduplicate array in-place
+    console.log(`Processing user: ${user.id}`); // Side-effect
+  })
+  ._p(stringifyJson)
+  .out();
+
+```
+
+<br />
+
+### Structural Manipulation with `alterValue` (`._al()`, `.$al()`)
+
+This method allows for targeted, granular updates to nested objects, arrays, or buffers. It effectively flattens structural modification into the pipeline, handling path resolution—including the dynamic creation of intermediate objects—to avoid common `TypeError` crashes when accessing undefined properties.
+
+```javascript
+// Simple key/property injection
+const user = chain_(rawData)
+  ._p(parseJson)
+  ._al('date', Date.now())
+  ._al('role', 'admin')
+  ._p(stringifyJson)
+  .out();
+
+// Deeply nested assignment with automatic path spawning
+const config = chain_({})
+  ._al('settings.network.port', 8080)
+  ._al('settings.network.host', 'localhost')
+  ._al('settings.network.port', (port) => port + 1) // Functional update
+  .out();
+// Result: { settings: { network: { port: 8081, host: 'localhost' } } }
+
+// Error handling within deep updates
+const secureUpdate = chain_(data)
+  ._al(
+      'user.profile.meta.loginCount',
+      (c) => c + 1,
+      false,         // Disable automatic object spawning
+      () => 0        // Fallback assigned if path traversal fails
+  ).out();
+
+// Array index manipulation
+const arr = chain_([10, 20, 30])
+  .$al(3, 99)         // Append to index 3
+  ._al(0, v => v + 2) // Modify index 0
+  .$al(1, v => v + Math.random() + 1) 
+  .$o();              // Result: [12, 21.333144666360999, 30, 99]
+
+```
+
+<br />
+
+### Error Handling & Control Flow
+
+The library employs an opinionated approach to error isolation and conditional flow, utilizing try-catch blocks and predicate-based branching to avoid the nested complexity of traditional procedural code.
+
+#### Fault-Tolerant Operations
+
+These methods wrap execution in internal `try-catch` blocks. If an operation fails, they can either trigger a recovery callback or force a transition to a static fallback value.
+
+* **`tryModify` (`._t`, `.$t`)**: Maps an input to a result. If the transformation throws, the library executes a fallback (if provided) or assigns the recovery value to the internal state.
+* **`tryMutate` (`._tm`, `.$tm`)**: Designed for side-effect-heavy tasks (e.g., buffer manipulation, DB rollbacks). It captures errors during execution to perform cleanup, such as zeroing sensitive buffers, without altering the underlying data flow.
+
+```javascript
+// Example: Safe API recovery
+chain_(rawInput)
+  ._t(JSON.parse, (err, raw) => ({ error: true, raw })) // Intercept and handle parsing failure
+  ._p(result => result.error ? defaultData : result)    // Resume chain
+  ._o();
+
+```
+
+#### Branching & Early Exit
+
+These methods provide mechanism for conditional execution and short-circuiting to keep the pipeline linear.
+
+* **`tapWhen` (`._w`, `.$w`)**: Conditional side-effect execution. If the predicate returns `true`, the callback executes. The pipeline continues regardless of whether the predicate passed.
+* **`exitWhen` (`._x`, `.$x`)**: The short-circuit mechanism. If the predicate condition is met, the instance returns a `SilentPipe`—a minimal, non-functional wrapper that discards all subsequent method calls, effectively terminating the chain with the current value.
+
+```javascript
+// Example: Short-circuiting the pipeline
+chain_(input)
+  ._x(d => !d.isValid, () => "ABORTED") // Terminates chain here if invalid
+  ._p(d => heavyLogic(d))               // Skipped if exitWhen triggered
+  ._o();
+
+```
+
+<br />
+
+### The Termination Routine
+
+The `.out()` method serves as the final step of the chain, acting as a mandatory cleanup and exit point for the internal state.
+
+```javascript
+// Signature: .out(fallbackValue?, shouldLock=true)
+
+const result = pipe.out("fallback", true);
+console.log(pipe.isLocked()); // true
+```
+
+* **Fallback Logic**: Returns the provided `fallbackValue` if the internal state evaluates to `undefined`, effectively handling empty results.
+* **State Disposal**: Performs a destructive update to the internal private variable, stripping the instance of its previous data.
+* **Lifecycle Locking**: Invokes `Object.freeze()` on the instance, rendering the container immutable and preventing any further method invocations on that specific pipeline.
+
+<br />
+
+### Shortcut one-liner
+
+It is possible to achieve a functional code with almost no `const`, `let`, or `var`.
+
+<br />
+
+**Before (Imperative):**
+
+```javascript
+function encryptMsg(algo, data, key, iv) {
+  const cipher = crypto.createCipheriv(algo, key, iv);
+  const encrypted = Buffer.concat([cipher.update(data), cipher.final()]);
+  key.fill(0); // Sensitive cleanup
+  iv.fill(0);
+  return encrypted;
+}
+```
+
+<br />
+
+**After (With Pipe):**
+
+```javascript
+function encryptMsg(algo, data, key, iv) {
+  return chain_([algo, key, iv])
+    ._p(a => crypto.createCipheriv(...a))                // Create cipher
+    ._p(c => Buffer.concat([c.update(data), c.final()])) // Process data
+    ._m(() => zeroBuf(key, iv))                          // Cleanup & return
+    .out();
+}
+```
+
+<br />
+
+**Visual comparison to TC39 (Hack-style pipes):**
+
+```javascript
+function encryptMsg(algo, data, key, iv) {
+  return [algo, key, iv]
+    |> crypto.createCipheriv(...%) 
+    |> Buffer.concat([%.update(data), %.final()])
+    |> (key.fill(0), iv.fill(0), %)
+}
+```
+
+<br />
+<br />
+<br />
+
+### 🧩 Technical Implementation Reference
+
+This table outlines the API for this library, which utilizes an opinionated, stateful container design that is heavily reliant on internal object references and side-effect management.
+
+| Method | Shorthand | Strategy | Behavioral Notes |
+| --- | --- | --- | --- |
+| **`modify`** | `_p`, `$p` | Functional Map | Replaces internal state with the result of the callback. Requires explicit return value. |
+| **`mutate`** | `_m`, `$m` | In-place Effect | Ignores the return value of the callback. Strictly for modifying existing references. |
+| **`tryModify`** | `_t`, `$t` | Error-Bound Map | Maps to a fallback value or execution if the primary transformation throws an exception. |
+| **`tryMutate`** | `_tm`, `$tm` | Error-Bound Effect | Similar to `mutate` but catches exceptions to run a recovery function or assign a fallback value. |
+| **`tapWhen`** | `_w`, `$w` | Conditional Logic | Executes only if the predicate matches. Does not necessarily transform data. |
+| **`exitWhen`** | `_x`, `$x` | Short-Circuit | Returns a `SilentPipe` instance upon success, effectively terminating all future operations. |
+| **`alterValue`** | `_al`, `$al` | Path-based Set | Performs direct key assignment or deep-property traversal using string-based dot notation. |
+| **`out`** | `_o`, `$o` | Finalization | Resolves the final value and enforces an internal `Object.freeze` (default) to terminate usage. |
+| **`isLocked`** | `_l`, `$l` | Status Check | Returns the `Object.isFrozen` status of the internal pipe instance. |
+
+<br />
+<br />
+
+---
+
+<br />
+
+## 🛠 ️Development & Verification
+
+```bash
+npm run check        # test + verify checksums
+npm run build        # minify + generate docs + checksums
+npm test
+```
+
+<br />
+
+The project uses:
+
+* `terser` for minification
+* SHA-256 checksums for all built files
+* Strict mode + comprehensive test suite
+
+<br />
+
+---
+
+<br />
+
+## ⭐ Contributor(s)
+
+<a href="https://github.com/harnuma9/modify-js/graphs/contributors">
+  <img alt="contributors" src="https://contrib.rocks/image?repo=harnuma9/modify-js"/>
+</a>
+
+<br />
+<br />
+<br />
+
+## License
+
+Licensed under the **Apache License, Version 2.0**; a robust, permissive license that includes an explicit grant of patent rights and provides protection against contributor liability.
+
+Copyright © 2026 Aries Harbinger. See the **[LICENSE](https://github.com/harnuma9/modify-js/blob/main/LICENSE)** file for full details.
+
+<br />
+<br />
+
+## 🔗 Links
+
+* [Github Repository](https://github.com/harnuma9/modify-js)
+* [npm Package](https://www.npmjs.com/package/@stless/modify-js)
+* Full AI Context **[llms-full.txt](https://github.com/harnuma9/modify-js/blob/main/llms-full.txt)** (for contributors / LLM assistants)
+
+<br />
+<br />
+<br />
+<br />
+````
