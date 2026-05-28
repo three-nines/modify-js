@@ -1,7 +1,7 @@
 {
   "name": "@stless/modify-js",
-  "version": "1.2.4",
-  "description": "Lightweight, high-performance, zero-dependency, hardened polyfill for the TC39 Pipeline Operator.",
+  "version": "2.0.0",
+  "description": "Zero-dependency, hardened functional pipeline utility for Node.js. A predictable, secure alternative to the TC39 Pipeline Operator.",
   "author": "Aries Harbinger",
   "license": "Apache-2.0",
   "homepage": "https://github.com/harnuma9/modify-js#readme",
@@ -39,20 +39,22 @@
   },
   "keywords": [
     "pipeline",
-    "lightweight",
     "functional",
     "chaining",
     "utility",
-    "polyfill",
-    "hardened",
+    "pipe",
     "tc39",
-    "fluent-interface"
+    "fluent-interface",
+    "hardened",
+    "security",
+    "memory-safe"
   ],
-  "devDependencies": {
-    "@types/node": "^25.9.1",
-    "typedoc": "^0.27.9"
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typedoc": "^0.28.19",
+    "typescript": "^6.0.3"
   }
 }
